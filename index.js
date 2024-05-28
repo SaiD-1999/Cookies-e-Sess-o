@@ -66,10 +66,10 @@ function cadastrarProduto(requisicao, resposta){
         <body>
             <h1 class="text-center mt-3">Cadastro De Produtos</h1><br><br>
             <div class="container mb-5">
-                <form method="POST" action='/cadastrar' class=" border row g-2">
+                <form method="POST" action='/cadastrarProduto' class=" border row g-2">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome do fabricante:</label><br>
-                        <input type="text" class="form-control" id="nome" name="nome">`);
+                        <input type="text" class="form-control" id="nome" name="nome" value="${nome}">`);
         if(nome == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -80,7 +80,7 @@ function cadastrarProduto(requisicao, resposta){
         resposta.write(`</div>
         <div class="mb-3">
             <label for="codigo" class="form-label">Código de barras:</label><br>
-            <input type="text" class="form-control" id="codigo" name="codigo">`);
+            <input type="text" class="form-control" id="codigo" name="codigo" value="${codigo}">`);
         if(codigo == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -91,7 +91,7 @@ function cadastrarProduto(requisicao, resposta){
         resposta.write(`</div>
         <div class="mb-3">
             <label for="descricao" class="form-label">Descrição do produto:</label><br>
-            <input type="text" class="form-control" id="descricao" name="descricao">`);
+            <input type="text" class="form-control" id="descricao" name="descricao" value="${descricao}">`);
         if(descricao == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -102,7 +102,7 @@ function cadastrarProduto(requisicao, resposta){
         resposta.write(`</div>
         <div class="mb-3">
             <label for="custo" class="form-label">Preço de custo:</label><br>
-            <input type="text" class="form-control" id="custo" name="custo">`);
+            <input type="text" class="form-control" id="custo" name="custo" value="${custo}">`);
         if(custo == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -113,7 +113,7 @@ function cadastrarProduto(requisicao, resposta){
         resposta.write(`</div>
         <div class="mb-3">
             <label for="venda" class="form-label">Preço de venda:</label><br>
-            <input type="text" class="form-control" id="venda" name="venda">`);
+            <input type="text" class="form-control" id="venda" name="venda" value="${venda}">`);
         if(venda == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -124,7 +124,7 @@ function cadastrarProduto(requisicao, resposta){
         resposta.write(`</div>
         <div class="col-md-5">
             <label for="validade" class="form-label">Data de validade:</label><br>
-            <input type="text" class="form-control" id="validade" name="validade">`);
+            <input type="text" class="form-control" id="validade" name="validade" value="${validade}">`);
         if(validade == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -135,7 +135,7 @@ function cadastrarProduto(requisicao, resposta){
         resposta.write(`</div>
         <div class="col-md-4">
             <label for="quantidade" class="form-label">Quantidade em estoque:</label><br>
-            <input type="text" class="form-control" id="quantidade" name="quantidade">`);
+            <input type="text" class="form-control" id="quantidade" name="quantidade" value="${quantidade}">`);
         if(quantidade == ""){
             resposta.write(`
                         <div m-2 class="alert alert-danger" role="alert">
@@ -177,17 +177,13 @@ function autenticarUsuario(requisicao, resposta){
         resposta.write('<!DOCTYPE html>');
         resposta.write('<html lang="pt-br>');
         resposta.write('<head>');
-        resposta.write('<meta charset="utf-8">');
+        resposta.write('<meta charset="UTF-8">');
         resposta.write('<title>Erro ao logar</title>');
         resposta.write('</head>');
         resposta.write('<body>');
-        resposta.write('<p>Usuário ou senha inválidos!</p>');
-        resposta.write('<a href="/login.html">Voltar</a>');
-        if (requisicao.cookies.dataUltimoAcesso){
-            resposta.write('<p>');
-            resposta.write('Seu último acesso foi em ' + requisicao.cookies.dataUltimoAcesso);
-            resposta.write('</p>');
-        }
+        resposta.write('<p>Usuario ou senha invalidos!</p>');
+        resposta.write('<script type="text/javascript">   function Redirect() { window.location="/login.html"; }  setTimeout(\'Redirect()\', 5000);</script>');
+        resposta.write(`<script type="text/javascript"> document.write("Voce vai ser redirecionado pra tela de login");</script>`);
         resposta.write('</body>');
         resposta.write('</html>');
         resposta.end();
